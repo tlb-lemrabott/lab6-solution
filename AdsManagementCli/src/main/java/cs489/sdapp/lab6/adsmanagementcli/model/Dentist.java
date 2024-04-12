@@ -17,11 +17,10 @@ public class Dentist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer dentistId;
-    private String firstName;
-    private String lastName;
+    private String dentistName;
     private String phone;
     private String email;
     private String speciality;
-    @OneToMany
+    @OneToMany(mappedBy = "dentistAppointment", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 }

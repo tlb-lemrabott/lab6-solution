@@ -20,9 +20,9 @@ public class Address {
     private String state;
     private String zipCode;
     private String apt;
-    @OneToOne
+    @OneToOne(mappedBy = "patientAddress", cascade = CascadeType.ALL)
     private Patient patient;
-    @OneToOne
+    @OneToOne(mappedBy = "surgeryAddress", cascade = CascadeType.ALL)
     private Surgery surgery;
 
 }

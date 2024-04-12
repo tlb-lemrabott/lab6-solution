@@ -18,14 +18,16 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer patientId;
-    private String firstName;
-    private String lastName;
+    private String patName;
     private String phone;
     private String email;
     private LocalDate birthDate;
-    @OneToOne
-    private Address address;
-    @OneToMany
+
+    @OneToOne()
+    @JoinColumn(name = "address_id_fk", nullable = false, unique = true)
+    private Address patientAddress;
+
+    @OneToMany(mappedBy = "patientAppointment", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
 }

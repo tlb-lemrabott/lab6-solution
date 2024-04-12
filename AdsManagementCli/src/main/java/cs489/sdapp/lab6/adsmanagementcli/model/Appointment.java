@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -19,12 +17,22 @@ public class Appointment {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer appointmentId;
-    private LocalDate scheduleTime;
+    private LocalDateTime scheduleTime;
+
     @ManyToOne
-    private Patient patient;
+    @JoinColumn(name = "patient_id_fk", unique = false)
+    private Patient patientAppointment;
+
     @ManyToOne
-    private Dentist dentist;
+    @JoinColumn(name = "dentist_id_fk", unique = false)
+    private Dentist dentistAppointment;
+
     @ManyToOne
-    private Surgery surgery;
+    @JoinColumn(name = "surgery_id_fk", unique = false)
+    private Surgery surgeryAppointment;
+
+
+
+
 
 }

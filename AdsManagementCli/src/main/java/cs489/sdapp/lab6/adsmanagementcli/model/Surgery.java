@@ -17,10 +17,14 @@ public class Surgery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer surgeryId;
-    private String name;
+    private String surgeryName;
     private String phone;
-    @OneToOne
-    private Address address;
-    @OneToMany
+
+    @OneToOne()
+    @JoinColumn(name = "address_id_fk", nullable = false, unique = true)
+    private Address surgeryAddress;
+
+    @OneToMany(mappedBy = "surgeryAppointment", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
+
 }

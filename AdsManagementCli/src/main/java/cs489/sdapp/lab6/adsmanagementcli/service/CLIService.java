@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AppointmentService {
     public Appointment saveNewAppointment(Appointment appointment);
-    public List<Appointment> getAppointments();
+    public List<Appointment> getAllAppointments();
 }
